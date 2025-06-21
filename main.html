@@ -1,16 +1,91 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+  <meta charset="UTF-8" />
+  <title>Expanding Cards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .panel {
+      background-size: cover;
+      background-position: center;
+      transition: flex 0.7s ease-in;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      color: white;
+      padding: 20px;
+    }
+
+    .panel h3.img-text {
+      font-size: 24px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+
+    .panel.active {
+      flex: 5;
+    }
+
+    .panel.active h3.img-text {
+      opacity: 1;
+    }
+  </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+ <div class="container">
+  <div class="panel active" id="panel-1" style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+    <h3 class="img-text">Explore the world</h3>
+  </div>
+  <div class="panel" id="panel-2" style="background-image: url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+    <h3 class="img-text">Wild Forest</h3>
+  </div>
+  <div class="panel" id="panel-3" style="background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+    <h3 class="img-text">Sunny Beach</h3>
+  </div>
+  <div class="panel" id="panel-4" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80')">
+    <h3 class="img-text">City on Winter</h3>
+  </div>
+  <div class="panel" id="panel-5" style="background-image: url('https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80')">
+    <h3 class="img-text">Mountain Cloud</h3>
+  </div>
+</div>
+
+
+  <script>
+    const panels = document.querySelectorAll('.panel');
+
+    panels.forEach(panel => {
+      panel.addEventListener('click', () => {
+        panels.forEach(p => p.classList.remove('active'));
+        panel.classList.add('active');
+      });
+    });
+  </script>
 
 </body>
-
 </html>
+
